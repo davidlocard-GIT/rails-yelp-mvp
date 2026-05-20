@@ -1,0 +1,15 @@
+<h2><%= @restaurant.name %></h2>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+<%= link_to "Delete",
+  "/restaurants/#{@restaurant.id}",
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+<%= link_to "Edit", "/restaurants/#{@restaurant.id}/edit" %>
+<%= link_to "Back", "/restaurants" %>
+<h3>Reviews</h3>
+<% @restaurant.reviews.each do |review| %>
+  <p><%= review.content %> - Note : <%= review.rating %>/5</p>
+<% end %>
+<%= link_to "Add a review", "/restaurants/#{@restaurant.id}/reviews/new" %>
